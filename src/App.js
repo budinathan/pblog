@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Landing from "./landingPage/landing";
+import { Route, Routes } from "react-router-dom";
+import Loginpage from "./page/loginPage";
+import Register from "./page/registerPage";
+import Indexpage from "./page/indexPage";
+
+import Layout from "./layout/layout";
+import { UserContextProvider } from "./userContext";
+import CreatePost from "./page/createPost";
+import PostPage from "./page/postPage";
+import EditPost from "./page/editPost";
+import AboutPage from "./page/aboutPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="bg-gray-900">
+      <section className="max-w-7xl px-14 mx-auto max-md:px-4 text-gray-100 overflow-auto">
+        <UserContextProvider>
+          <Routes>
+            <Route path="/login" element={<Loginpage />} />
+            <Route path="/register" element={<Register />} />
+            <Route element={<Layout />}>
+              <Route path="/blog" element={<Indexpage />} />
+              <Route path="/" element={<Landing />} />
+              <Route path="/create" element={<CreatePost />} />
+              <Route path="/post/:id" element={<PostPage />} />
+              <Route path="/edit/:id" element={<EditPost />} />
+              <Route path="/about" element={<AboutPage />} />
+            </Route>
+          </Routes>
+        </UserContextProvider>
+      </section>
+    </main>
   );
 }
 
