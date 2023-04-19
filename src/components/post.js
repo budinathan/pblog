@@ -6,7 +6,7 @@ const Post = ({ _id, title, cover, createdAt }) => {
       <section className="flex overflow-hidden hover:scale-105 transition-all duration-200 ease-in-out">
         <Link to={`/post/${_id}`}>
           <img
-            src={"http://localhost:4000/" + cover}
+            src={`${process.env.REACT_APP_API_URL}/` + cover}
             alt="cover"
             className="object-cover object-center w-[100%] h-[100%] grayscale-[80%]"
           />

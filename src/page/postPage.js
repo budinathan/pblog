@@ -9,7 +9,7 @@ const PostPage = () => {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`).then((response) => {
+    fetch(`${process.env.REACT_APP_API_URL}/post/${id}`).then((response) => {
       response.json().then((postInfo) => {
         setPostInfo(postInfo);
       });
@@ -18,9 +18,12 @@ const PostPage = () => {
   if (!postInfo) return "";
 
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:4000/posts/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/posts/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     // Handle successful deletion here
 
     if (response.ok) {
@@ -57,7 +60,7 @@ const PostPage = () => {
       </section>
       <section className=" flex items-center justify-center mt-5">
         <img
-          src={`http://localhost:4000/${postInfo.cover}`}
+          src={`${process.env.REACT_APP_API_URL}/${postInfo.cover}`}
           alt="content"
           className=" object-cover w-full h-[300px] rounded-md shadow-md grayscale-[80%]"
         />
@@ -76,7 +79,7 @@ const PostPage = () => {
         ></div>
       </section>
       {userInfo.id === postInfo.author._id && (
-        <section>
+        <section className="z-20 relative">
           <h1 className="title text-2xl text-orangeColor mb-2">DANGER ZONE</h1>
           <button
             onClick={handleDelete}
