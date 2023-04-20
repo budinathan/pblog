@@ -14,7 +14,7 @@ import AboutPage from "./page/aboutPage";
 function App() {
   return (
     <main className="bg-gray-900">
-      <section className="max-w-7xl px-14 mx-auto max-md:px-4 text-gray-100 overflow-auto">
+      <section className="max-w-7xl px-14 mx-auto max-md:px-4 text-gray-100">
         <UserContextProvider>
           <Routes>
             <Route path="/login" element={<Loginpage />} />

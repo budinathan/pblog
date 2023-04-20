@@ -43,7 +43,7 @@ const CreatePost = () => {
     return <Navigate to="/blog" />;
   }
   return (
-    <main className="px-24 py-6 flex flex-col max-sm:px-5 h-screen">
+    <main className="px-24 py-6 flex flex-col max-sm:px-5 h-screen overflow-auto">
       <h1 className="title text-7xl max-md:text-5xl max-sm:text-3xl text-pinkColor">
         Create new blog
       </h1>
